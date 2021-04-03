@@ -7,4 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED)
 set(SOURCE_FILES  main.cpp)
 add_executable(Dimention_cal ${SOURCE_FILES})
 
-add_executable(test Test/test.cpp)
+add_executable(test Test/test.hpp)
