@@ -1,7 +1,8 @@
 #include "dimentional_cal.hpp"
 
 int main(){
-  Dcal dcal = Dcal();
+  DCal dCal;
+  dCal.run();
    
   return 0;
 }
