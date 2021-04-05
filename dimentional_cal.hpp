@@ -2,51 +2,37 @@
 #define DIMENTIONS_DIMENTIONAL_CAL_HPP
 #define MAX 1000
 #include <iostream>
+#include <math.h>
 
-class Dcal{
+class DCal{
 public:
-    Dcal(){
-      start();
-    }
+	void run(){
+		std::cout<<"Get Length:";
+		std::cin>>l;
+		std::cout<<"Total Dimensions:";
+		std::cin>>*dimension_num;
+		dimension_call();
+		display();
+	}
 private:
-	// initializing the variables
-	int *dime_arr = new int[MAX],*dimen_nums = new int,row_nodes,n,N;
-	bool yes_or = true;
-	// as the starter point
-	void start(){
-    
-		get_dimension_info(2);
-		//dimen_axis_arr();
-    calcualtion();
-	}
-	//get dimensions 
-	void get_dimension_info(int type){
-    if(type ==1){
-      std::cout<<"one row nodes";
-      std::cin>>row_nodes;
-      std::cout<<"Dimention number";
-      std::cin>>*dimen_nums;
-    }else if (type ==2){
-      std::cout<<"Enter N";
-      std::cin>>n;
-      std::cout<<"Enter n";
-      std::cin>>n;
-    }
-	}
-	void dimen_axis_arr(){
-		for(int i =0;i<*dimen_nums; ++i){
-			std::cout<<"Axal "<<i<<"\t";
-			std::cin>>dime_arr[i];
-			std::cout<<"\n";
+	int *dimension_num = new int,l=16;
+	long long int *faces=new long long int[*dimension_num],*vol=new long long int[*dimension_num],*perdime=new long long int[*dimension_num];
+	void dimension_call(){
+		for (int i=0;i<*dimension_num;++i){
+			vol[i]= pow(l,i+1);
+			faces[i]=i*2;
+			perdime[i]= faces[i]*pow(l,i);
 		}
 	}
-	int calcualtion(){
-    dime_arr[0]=N-1;
-    dime_arr[1]=n;
-    // second cal
-    dime_arr[2]=dime_arr[0];
-    dime_arr[3]=n-1;
-    return 0;
-  }
+	void display(){
+		std::string line = "--------------------------------------------------------------------------------------------------------";
+		std::cout<<"Dimension\t\tFaces\tVolume\tsurface_perimeter"<<std::endl;
+		std::cout<<line<<std::endl;
+		for(int i=0;i<*dimension_num;++i){
+			//printf("%d\t\t%d\t%d\t%d",i,faces[i],vol[i],perdime[i]);
+			std::cout<<i<<"\t\t"<<faces[i]<<"\t"<<vol[i]<<"\t"<<perdime[i]<<std::endl;
+		}
+		std::cout<<line<<std::endl;
+	}
 };
 #endif // DIMENTIONS_DIMENTIONAL_CAL_HPP
